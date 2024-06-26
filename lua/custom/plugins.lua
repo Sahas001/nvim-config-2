@@ -46,6 +46,7 @@ local plugins = {
       require("better_escape").setup()
     end,
   },
+  { "tpope/vim-surround", lazy = false },
 
   -- To make a plugin not be loaded
   -- {
