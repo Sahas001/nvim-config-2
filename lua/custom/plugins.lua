@@ -47,6 +47,17 @@ local plugins = {
     end,
   },
   { "tpope/vim-surround", lazy = false },
+  {
+    "olexsmir/gopher.nvim",
+    ft = "go",
+    config = function(_, opts)
+      require("gopher").setup(opts)
+      require("core.utils").load_mappings "gopher"
+    end,
+    build = function()
+      vim.cmd [[silent! GoInstallDeps]]
+    end,
+  },
 
   -- To make a plugin not be loaded
   -- {
