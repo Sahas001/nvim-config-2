@@ -139,6 +139,7 @@ M.lspconfig = {
 
     ["gd"] = {
       function()
+        vim.cmd "vsplit"
         vim.lsp.buf.definition()
       end,
       "LSP definition",
