@@ -30,4 +30,37 @@ M.gopher = {
   },
 }
 
+-- neotest mapping
+
+M.neotest = {
+
+  n = {
+    ["<leader>tt"] = {
+      "<cmd> lua require('neotest').run.run() <CR>",
+      "Run nearest test",
+      opts = { noremap = true, silent = true },
+    },
+    ["<leader>tf"] = {
+      "<cmd> lua require('neotest').run.run(vim.fn.expand('%')) <CR>",
+      "Run tests in file",
+      opts = { noremap = true, silent = true },
+    },
+    ["<leader>ts"] = {
+      "<cmd> lua require('neotest').summary.toggle() <CR>",
+      "Toggle test summary",
+      opts = { noremap = true, silent = true },
+    },
+    ["<leader>to"] = {
+      "<cmd> lua require('neotest').output.open({ enter = true }) <CR>",
+      "Open test output",
+      opts = { noremap = true, silent = true },
+    },
+    ["<leader>td"] = {
+      "<cmd> lua require('neotest').run.run({ strategy = 'dap' }) <CR>",
+      "Debug nearest test",
+      opts = { noremap = true, silent = true },
+    },
+  },
+}
+
 return M

@@ -59,6 +59,24 @@ local plugins = {
     end,
   },
 
+  -- Add neotest and neotest-go
+  { "nvim-neotest/nvim-nio" },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-neotest/neotest-go",
+    },
+    config = function()
+      require("core.utils").load_mappings "neotest"
+      require("neotest").setup {
+        adapters = {
+          require "neotest-go",
+        },
+      }
+    end,
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
