@@ -68,7 +68,6 @@ local plugins = {
       "nvim-neotest/neotest-go",
     },
     config = function()
-      require("core.utils").load_mappings "neotest"
       require("neotest").setup {
         adapters = {
           require "neotest-go",
@@ -76,6 +75,8 @@ local plugins = {
       }
     end,
   },
+
+  { "mbbill/undotree", lazy = false },
 
   -- To make a plugin not be loaded
   -- {

@@ -63,4 +63,14 @@ M.neotest = {
   },
 }
 
+M.undotree = {
+  n = {
+    ["<leader>u"] = {
+      "<cmd> UndotreeToggle <CR>",
+      "Toggle Undotree",
+      opts = { noremap = true, silent = true },
+    },
+  },
+}
+
 return M
