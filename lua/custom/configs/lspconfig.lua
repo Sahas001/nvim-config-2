@@ -8,20 +8,7 @@ local util = require "lspconfig/util"
 local servers = { "html", "cssls", "tsserver", "clangd", "tailwindcss" }
 
 lspconfig.gopls.setup {
-  on_attach = function(client, bufnr)
-    if client.server_capabilities.documentFormattingProvider then
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format { bufnr = bufnr }
-          vim.lsp.buf.code_action {
-            context = { only = { "source.organizeImports" } },
-            apply = true,
-          }
-        end,
-      })
-    end
-  end,
+  on_attach = on_attach,
   capabilities = capabilities,
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -40,6 +27,16 @@ lspconfig.gopls.setup {
         gc_details = true,
       },
     },
+  },
+}
+
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "typescript-language-server", "--stdio" },
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
+  init_options = {
+    hostInfo = "neovim",
   },
 }
 
