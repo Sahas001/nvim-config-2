@@ -7,19 +7,6 @@ local utils = require "core.utils"
 -- export on_attach & capabilities for custom lspconfigs
 
 M.on_attach = function(client, bufnr)
-  if client.server_capabilities.documentFormattingProvider then
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.buf.format { bufnr = bufnr }
-        vim.lsp.buf.code_action {
-          context = { only = { "source.organizeImports" } },
-          apply = true,
-        }
-      end,
-    })
-  end
-
   utils.load_mappings("lspconfig", { buffer = bufnr })
 
   if client.server_capabilities.signatureHelpProvider then

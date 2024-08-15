@@ -46,7 +46,7 @@ local plugins = {
       require("better_escape").setup()
     end,
   },
-  { "tpope/vim-surround", lazy = false },
+  { "tpope/vim-surround",   lazy = false },
   {
     "olexsmir/gopher.nvim",
     ft = "go",
@@ -75,8 +75,6 @@ local plugins = {
       }
     end,
   },
-
-  { "mbbill/undotree", lazy = false },
 
   -- To make a plugin not be loaded
   -- {
